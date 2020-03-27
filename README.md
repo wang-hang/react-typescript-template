@@ -1,6 +1,11 @@
 # React + Typescript 模板
 
-## START
+## #Development
 ```npm run dev ```
 or
 ```yarn dev ```
+
+## #Build
+```npm run build ```
+or
+```yarn build ```

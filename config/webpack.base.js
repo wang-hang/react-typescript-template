@@ -1,15 +1,17 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
 const paths = require('./paths')
 const config = require('./config')
 
 module.exports = {
-  entry: paths.entry,
   output:{
     filename: '[name]:[hash:6].js',
-    publicPath: '/'
+    publicPath: '/',
+    path: paths.outputDir,
   },
   resolve:{
     alias: config.alias,
@@ -40,5 +42,6 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
+    new ProgressBarPlugin(),
   ]
 }

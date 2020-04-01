@@ -16,7 +16,7 @@ const devConfig = {
     new webpack.HotModuleReplacementPlugin(),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: `Your Application is running here http://localhost:${config.port}`,
+        messages: [`Your Application is running here http://localhost:${config.port}`],
       }
     }),
   ]

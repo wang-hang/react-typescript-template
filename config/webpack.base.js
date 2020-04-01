@@ -8,8 +8,8 @@ const config = require('./config')
 
 module.exports = {
   output:{
-    filename: '[name]:[hash:6].js',
-    publicPath: '/',
+    filename: paths.outputFileName,
+    publicPath: paths.publicPath,
     path: paths.outputDir,
   },
   resolve:{
@@ -42,6 +42,7 @@ module.exports = {
   plugins:[
     new HtmlWebpackPlugin({
       template: paths.templateHtml,
+      // filename: paths.outputHtml,
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),

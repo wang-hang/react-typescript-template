@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const isProd = process.env.NODE_ENV === 'production'
 
 const paths = require('./paths')
 const config = require('./config')
@@ -20,11 +21,25 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {hmr: !isProd},
+          },
+          'css-loader'
+        ],
       },
       {
         test: /\.styl$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'stylus-loader'],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {hmr: !isProd},
+          }  
+          ,
+          'css-loader',
+          'stylus-loader'
+        ],
       },
       {
         test: /\.ts(x?)$/,
